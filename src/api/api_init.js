@@ -1,17 +1,14 @@
 
 function init(app) {
-    app.post('/POST/', function(req, res) {
-        res.send("POST received")
-    })
-
-    app.get('/GET/', function (req, res) {
+    app.get('/', function (req, res) {
         res.send("GET received")
     })
 
-
-
+    app.post('/', function (req, res) {
+        res.send("POST received")
+    })
 }
 
 module.exports = {
     init: init
-};
+}
