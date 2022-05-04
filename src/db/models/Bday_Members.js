@@ -22,6 +22,10 @@ const _TABLE = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN,
             allowNull: false
         },
+        "anonym": {
+            type: Sequelize.BOOLEAN,
+            allowNull: false
+        },
     }, {
         timestamp: false
     })
@@ -41,14 +45,16 @@ async function get_all_names(DB) {
 }
 
 // add stuff to database
-async function add(DB, forename, surname, need_bed, nerd) {
+async function add(DB, forename, surname, need_bed, nerd, anonym) {
     try {
         await DB["Bday_Members"].TABLE.create({
             "forename": forename,
             "surname": surname,
             "need_bed": need_bed,
             "nerd": nerd,
+            "anonym": anonym
         })
+        return true
 
     } catch (e) {
         if (e.name === 'SequelizeUniqueConstraintError') {
@@ -56,6 +62,8 @@ async function add(DB, forename, surname, need_bed, nerd) {
         } else {
             console.log(e)
         }
+
+        return false
     }
 }
 
@@ -67,8 +75,8 @@ async function get(DB, forename, surname) {
 
 
 // set stuff in database
-async function set(DB, forename, surname, need_bed, nerd) {
-    const new_tag = await DB["Bday_Members"].TABLE.update({ "need_bed": need_bed, "nerd": nerd },
+async function set(DB, forename, surname, need_bed, nerd, anonym) {
+    const new_tag = await DB["Bday_Members"].TABLE.update({ "need_bed": need_bed, "nerd": nerd, "anonym": anonym },
         { where: { "forename": forename, "surname": surname } })
 
     if (new_tag[0]) {
