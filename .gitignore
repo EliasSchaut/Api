@@ -105,3 +105,6 @@ dist
 
 # IDE
 .idea
+
+# Project Internals
+*.sqlite
