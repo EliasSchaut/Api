@@ -108,3 +108,4 @@ dist
 
 # Project Internals
 *.sqlite
+config/config.json
