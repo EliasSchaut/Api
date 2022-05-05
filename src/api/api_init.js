@@ -2,7 +2,7 @@
 const __all__ = [
     "/bday/member",
     "/bday/members",
-    "/bday/members_count"
+    "/bday/members/count"
 ]
 
 function init(app) {
