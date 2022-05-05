@@ -38,7 +38,7 @@ function init(app, path) {
                 res.sendStatus(500)
             }
         } else {
-            res.status(406).send("Member not found")
+            res.status(404).send("Member not found")
         }
     })
 }
