@@ -36,12 +36,26 @@ const _TABLE = (sequelize, Sequelize) => {
 // ---------------------------------------------
 // Helper
 // ---------------------------------------------
-// GET all names
+// get all names
 async function get_all_names(DB) {
     const tag = await DB["Bday_Members"].TABLE.findAll({attributes: ["forename", "surname"] })
     return (tag) ? tag.map(function (e) {
         return e.dataValues.user_id
     }) : []
+}
+
+// get all not anonym names
+async function get_all_names_public(DB) {
+    const tag = await DB["Bday_Members"].TABLE.findAll({attributes: ["forename", "surname"], where: {anonym: false} })
+    return (tag) ? tag.map(function (e) {
+        return e.dataValues
+    }) : []
+}
+
+// get all not anonym names
+async function get_names_count(DB) {
+    const { count } = await DB["Bday_Members"].TABLE.findAndCountAll({})
+    return count
 }
 
 // add stuff to database
@@ -103,4 +117,4 @@ async function remove(DB, forename, surname) {
 // ---------------------------------------------
 
 
-module.exports = { _TABLE, get_all_names, add, get, set, remove }
+module.exports = { _TABLE, get_all_names, get_all_names_public, get_names_count, add, get, set, remove }

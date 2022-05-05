@@ -6,8 +6,8 @@ function init(app, path) {
         res.header("Access-Control-Allow-Methods", "GET, POST")
         res.header("Access-Control-Max-Age", "86400")
 
-        const count = await app.DB.Bday_Members.get_names_count(app.DB)
-        res.send(encodeURI(count))
+        const members = await app.DB.Bday_Members.get_all_names_public(app.DB)
+        res.send(JSON.stringify(members))
     })
 }
 

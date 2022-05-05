@@ -1,7 +1,7 @@
 
 const __all__ = [
     "/bday/member",
-    "/bday/members",
+    "/bday/members/public",
     "/bday/members/count"
 ]
 
