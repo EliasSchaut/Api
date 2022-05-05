@@ -18,8 +18,9 @@ function init(app) {
     })
 
     app.verifyToken = function (req, res, next) {
-        const token = req.headers['apitoken']
+        if (!req.headers.hasOwnProperty("apitoken")) return res.sendStatus(403)
 
+        const token = req.headers['apitoken']
         if (crypto.createHash("sha256").update(token).digest("hex") === app.sha256) {
             next()
         } else {
