@@ -69,7 +69,7 @@ async function add(DB, forename, surname, need_bed, nerd, anonym) {
 
 // GET stuff from database
 async function get(DB, forename, surname) {
-    const tag = await DB["Bday_Members"].TABLE.findOne({ where: { "guild_id": forename, "user_id": surname } })
+    const tag = await DB["Bday_Members"].TABLE.findOne({ where: { "forename": forename, "surname": surname } })
     return (tag) ? tag.dataValues : null
 }
 
