@@ -26,10 +26,12 @@ function init(app, path) {
         res.end()
     })
 
-    app.delete(path, function (req, res) {
-
+    app.delete(path, app.verifyToken, function (req, res) {
+        res.send("yes")
     })
 }
+
+
 
 module.exports = {
     init

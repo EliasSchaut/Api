@@ -1,4 +1,6 @@
 
+const crypto = require("crypto")
+
 const __all__ = [
     "/bday/member",
     "/bday/members/public",
@@ -13,6 +15,16 @@ function init(app) {
     app.post('/', function (req, res) {
         res.send("POST received")
     })
+
+    app.verifyToken = function (req, res, next) {
+        const token = req.headers['apitoken']
+
+        if (crypto.createHash("sha256").update(token).digest("hex") === app.sha256) {
+            next()
+        } else {
+            res.sendStatus(403)
+        }
+    }
 
     for (const path of __all__) {
         require(`./routes${path}.js`).init(app, path)
