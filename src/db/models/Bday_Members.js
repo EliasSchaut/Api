@@ -40,7 +40,7 @@ const _TABLE = (sequelize, Sequelize) => {
 async function get_all_names(DB) {
     const tag = await DB["Bday_Members"].TABLE.findAll({attributes: ["forename", "surname"] })
     return (tag) ? tag.map(function (e) {
-        return e.dataValues.user_id
+        return e.dataValues
     }) : []
 }
 
