@@ -46,7 +46,7 @@ Get all public (not anonym) bday_members from the DB as json!
 Get the number of all bday members from the DB as on single text! 
 
 ### Private
-Private routes are only accessible if you pass the correct api-token in the header `APITOKEN: <token>`
+Private routes are only accessible if you pass the correct api-token in the header `APITOKEN: <token>`.
 The programm hashes the passed token via sha256 and compares it to the one set in the configuration file.
 Only if the hashes are equal the request will be accepted.
 
