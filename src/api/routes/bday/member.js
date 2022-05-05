@@ -6,7 +6,7 @@ function init(app, path) {
         res.header("Access-Control-Allow-Methods", "GET, POST");
         res.header("Access-Control-Max-Age", "86400");
 
-        const member = req.body;
+        const member = req.body
         const forename = member.forename
         const surname = member.surname
         const need_bed = member.need_bed === "on"
@@ -26,8 +26,20 @@ function init(app, path) {
         res.end()
     })
 
-    app.delete(path, app.verifyToken, function (req, res) {
-        res.send("yes")
+    app.delete(path, app.verifyToken, async function (req, res) {
+        const member = req.body
+        const forename = member.forename
+        const surname = member.surname
+
+        if (await app.DB.Bday_Members.get(app.DB, forename, surname) !== null) {
+            if (await app.DB.Bday_Members.remove(app.DB, forename, surname)) {
+                res.sendStatus(200)
+            } else {
+                res.sendStatus(500)
+            }
+        } else {
+            res.status(406).send("Member not found")
+        }
     })
 }
 
