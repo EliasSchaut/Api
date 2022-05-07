@@ -50,7 +50,11 @@ async function get_all_names(DB) {
 
 // get all not anonym names
 async function get_all_names_public(DB) {
-    const tag = await DB["Bday_Members"].TABLE.findAll({attributes: ["forename", "surname"], where: {anonym: false} })
+    const tag = await DB["Bday_Members"].TABLE.findAll({
+        attributes: ["forename", "surname"],
+        where: {anonym: false},
+        order: [["forename", "surname"]]
+    })
     return (tag) ? tag.map(function (e) {
         return e.dataValues
     }) : []
