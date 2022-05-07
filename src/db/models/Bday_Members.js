@@ -18,6 +18,10 @@ const _TABLE = (sequelize, Sequelize) => {
             type: Sequelize.BOOLEAN,
             allowNull: false
         },
+        "has_bed": {
+            type: Sequelize.BOOLEAN,
+            allowNull: false
+        },
         "nerd": {
             type: Sequelize.BOOLEAN,
             allowNull: false
@@ -38,7 +42,7 @@ const _TABLE = (sequelize, Sequelize) => {
 // ---------------------------------------------
 // get all names
 async function get_all_names(DB) {
-    const tag = await DB["Bday_Members"].TABLE.findAll({attributes: ["forename", "surname"] })
+    const tag = await DB["Bday_Members"].TABLE.findAll({})
     return (tag) ? tag.map(function (e) {
         return e.dataValues
     }) : []
@@ -59,12 +63,13 @@ async function get_names_count(DB) {
 }
 
 // add stuff to database
-async function add(DB, forename, surname, need_bed, nerd, anonym) {
+async function add(DB, forename, surname, need_bed, has_bed, nerd, anonym) {
     try {
         await DB["Bday_Members"].TABLE.create({
             "forename": forename,
             "surname": surname,
             "need_bed": need_bed,
+            "has_bed": has_bed,
             "nerd": nerd,
             "anonym": anonym
         })
@@ -89,8 +94,8 @@ async function get(DB, forename, surname) {
 
 
 // set stuff in database
-async function set(DB, forename, surname, need_bed, nerd, anonym) {
-    const new_tag = await DB["Bday_Members"].TABLE.update({ "need_bed": need_bed, "nerd": nerd, "anonym": anonym },
+async function set(DB, forename, surname, need_bed, has_bed, nerd, anonym) {
+    const new_tag = await DB["Bday_Members"].TABLE.update({ "need_bed": need_bed, "has_bed": has_bed, "nerd": nerd, "anonym": anonym },
         { where: { "forename": forename, "surname": surname } })
 
     if (new_tag[0]) {
