@@ -68,3 +68,6 @@ Get all bday_members (also the anonym members) from the DB as json!
 
 * `GET /bday/members/html` \
 Get all bday_members (also the anonym members) from the DB as html!
+
+* `GET /bday/members/sums` \
+Get sums of all kind of data!
