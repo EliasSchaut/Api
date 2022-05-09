@@ -27,6 +27,19 @@ function init(app, path) {
         res.end()
     })
 
+    app.get(path, app.verifyToken, async function (req, res) {
+        const member = req.body
+        const forename = member.forename
+        const surname = member.surname
+        const db_member = await app.DB.Bday_Members.get(app.DB, forename, surname)
+
+        if (db_member !== null) {
+            res.status(200).json(db_member)
+        } else {
+            res.status(404).send("Member not found")
+        }
+    })
+
     app.delete(path, app.verifyToken, async function (req, res) {
         const member = req.body
         const forename = member.forename
