@@ -50,6 +50,9 @@ Private routes are only accessible if you pass the correct api-token in the head
 The programm hashes the passed token via sha256 and compares it to the one set in the configuration file.
 Only if the hashes are equal the request will be accepted.
 
+* `GET /bday/member` \
+  Get a bday_member from the DB!
+
 * `DELETE /bday/member` \
 Delete a bday_member from the DB! \
 Body as `x-www-form-urlencoded`:
