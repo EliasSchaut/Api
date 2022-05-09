@@ -66,6 +66,17 @@ async function get_names_count(DB) {
     return count
 }
 
+// get all not anonym names
+async function aggregate(DB) {
+    const counts = {}
+    counts.anonym = (await DB["Bday_Members"].TABLE.findAndCountAll({ where: { anonym: true} })).count
+    counts.need_bed = (await DB["Bday_Members"].TABLE.findAndCountAll({ where: { need_bed: true} })).count
+    counts.has_bed = (await DB["Bday_Members"].TABLE.findAndCountAll({ where: { has_bed: true} })).count
+    counts.nerd = (await DB["Bday_Members"].TABLE.findAndCountAll({ where: { nerd: true} })).count
+
+    return counts
+}
+
 // add stuff to database
 async function add(DB, forename, surname, need_bed, has_bed, nerd, anonym) {
     try {
@@ -126,4 +137,4 @@ async function remove(DB, forename, surname) {
 // ---------------------------------------------
 
 
-module.exports = { _TABLE, get_all_names, get_all_names_public, get_names_count, add, get, set, remove }
+module.exports = { _TABLE, get_all_names, get_all_names_public, get_names_count, aggregate, add, get, set, remove }
