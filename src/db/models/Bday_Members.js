@@ -42,7 +42,7 @@ const _TABLE = (sequelize, Sequelize) => {
 // ---------------------------------------------
 // get all names
 async function get_all_names(DB) {
-    const tag = await DB["Bday_Members"].TABLE.findAll({})
+    const tag = await DB["Bday_Members"].TABLE.findAll({ attributes: ['forename', 'surname', 'need_bed', 'has_bed', 'nerd', 'anonym'] })
     return (tag) ? tag.map(function (e) {
         return e.dataValues
     }) : []
@@ -92,7 +92,7 @@ async function add(DB, forename, surname, need_bed, has_bed, nerd, anonym) {
 
 // GET stuff from database
 async function get(DB, forename, surname) {
-    const tag = await DB["Bday_Members"].TABLE.findOne({ where: { "forename": forename, "surname": surname } })
+    const tag = await DB["Bday_Members"].TABLE.findOne({ where: { "forename": forename, "surname": surname }, attributes: ['forename', 'surname', 'need_bed', 'has_bed', 'nerd', 'anonym'] })
     return (tag) ? tag.dataValues : null
 }
 
