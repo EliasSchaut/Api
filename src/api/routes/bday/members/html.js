@@ -22,7 +22,7 @@ function buildHtmlTable(data_array) {
             '<td>' + item.has_bed + '</td>' +
             '<td>' + item.nerd + '</td>' +
             '<td>' + item.anonym + '</td></tr>'
-    }).join('') + '</table>'
+    }).join('').replaceAll("true", "<b>true</b>") + '</table>'
 }
 
 function buildHtmlFrame(body){
