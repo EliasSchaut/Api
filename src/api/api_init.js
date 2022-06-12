@@ -8,7 +8,8 @@ const __all__ = [
     // "/bday/members/count",
     // "/bday/members/html",
     // "/bday/members/sums",
-    "/bimi/floorcon"
+    "/bimi/floorcon",
+    "/bimi/credit"
 ]
 
 function init(app) {
