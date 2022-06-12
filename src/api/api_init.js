@@ -2,12 +2,13 @@
 const crypto = require("crypto")
 
 const __all__ = [
-    "/bday/member",
-    "/bday/members",
-    "/bday/members/public",
-    "/bday/members/count",
-    "/bday/members/html",
-    "/bday/members/sums"
+    // "/bday/member",
+    // "/bday/members",
+    // "/bday/members/public",
+    // "/bday/members/count",
+    // "/bday/members/html",
+    // "/bday/members/sums",
+    "/bimi/floorcon"
 ]
 
 function init(app) {

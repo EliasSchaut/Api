@@ -5,6 +5,7 @@ const cors = require('cors')
 const config = require("../config/config.json")
 const app = express()
 
+app.config = config
 const port = config.port
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
