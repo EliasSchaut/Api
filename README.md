@@ -71,3 +71,17 @@ Get all bday_members (also the anonym members) from the DB as html!
 
 * `GET /bday/members/sums` \
 Get sums of all kind of data!
+
+* `POST /bimi/floorcon` \
+Add the floorcon to every floor member!
+
+* `POST /bimi/credit` \
+Give credit to a specific floor member!
+  Body as `x-www-form-urlencoded`:
+```js
+{
+    account: <string> // E401 | E402 | ...
+    value: <string> // e.g. "1.50"
+    text: <string> // e.g. "Credit for buying a bread!"
+}
+```
