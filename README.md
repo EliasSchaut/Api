@@ -4,7 +4,7 @@ Personal Web Api Interface not recommended to use for your own.
 ## Set Up
 1. You need node installed (current LTS version or newer)
 2. Download the newest version of the code
-3. Rename the [configuration file](https://github.com/EliasSchaut/Web-Api/blob/main/config/config.json.tmp) from ```config.json.tmp``` to ```config.json```
+3. Rename the ```.env.tmp``` file to ```.env```
 4. Open the configuration file (now ```config.json```) and set values. 
 5. Optional: Configure [`package.json`](https://github.com/EliasSchaut/Web-Api/blob/main/package.json)
 6. Run `npm install`.
