@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { EnvValidationSchema } from './common/env.validation';
+import { BimiModule } from './routes/bimi/bimi.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      validationSchema: EnvValidationSchema,
+    }),
+    BimiModule,
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}

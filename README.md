@@ -17,60 +17,12 @@ This will use [pm2](https://www.npmjs.com/package/pm2) for executing
 ## Routes
 
 ### Public
-* `POST /bday/member` \
-Post a bday_member into the DB! \
-Body as `x-www-form-urlencoded`:
-```js
-{
-    forname: <string>
-    surname: <string>
-    need_bed: <on> or <off>
-    nerd: <on> or <off>
-    anonym: <on> or <off>
-}
-```
-
-* `GET /bday/members/public` \
-Get all public (not anonym) bday_members from the DB as json!
-```js
-[
-    {
-        forname: <string>
-        surname: <string>
-    },
-    ...
-]
-```
-
-* `GET /bday/members/count` \
-Get the number of all bday members from the DB as on single text! 
+*None*
 
 ### Private
-Private routes are only accessible if you pass the correct api-token in the header `APITOKEN: <token>`.
-The programm hashes the passed token via sha256 and compares it to the one set in the configuration file.
+Private routes are only accessible if you pass the correct api-bearer-token in the request header.
+The programm hashes the passed token via sha256 and compares it to the one set in the env file.
 Only if the hashes are equal the request will be accepted.
-
-* `GET /bday/member` \
-  Get a bday_member from the DB!
-
-* `DELETE /bday/member` \
-Delete a bday_member from the DB! \
-Body as `x-www-form-urlencoded`:
-```js
-{
-    forname: <string>
-    surname: <string>
-}
-```
-
-* `GET /bday/members` \
-Get all bday_members (also the anonym members) from the DB as json!
-
-* `GET /bday/members/html` \
-Get all bday_members (also the anonym members) from the DB as html!
-
-* `GET /bday/members/sums` \
-Get sums of all kind of data!
 
 * `POST /bimi/floorcon` \
 Add the floorcon to every floor member!

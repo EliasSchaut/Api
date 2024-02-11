@@ -1,0 +1,13 @@
+import { Controller, Post } from '@nestjs/common';
+import { BimiService } from './bimi.service';
+
+@Controller()
+export class BimiController {
+
+  constructor(private readonly bimi_service: BimiService) {}
+
+  @Post("/floorcon")
+  async add_floor_contribution(): Promise<string> {
+    return this.bimi_service.add_floor_contribution()
+  }
+}
