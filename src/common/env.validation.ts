@@ -5,10 +5,19 @@ export const EnvValidationSchema = Joi.object({
     .default('3000')
     .port()
     .description('The port the server should listen on'),
-  AUTH_BEARER_SHA256_KEY: Joi.string().required().description('SHA256 encrypted token used to authenticate with Bearer'),
-  GLISTE_API_KEY: Joi.string().required().description('API key for "Getränkeliste App"'),
-  GLISTE_API_ACCOUNT: Joi.string().email().required().description('E-Mail of "Getränkeliste App" Account'),
-  FLOOR_CONTRIBUTION: Joi.number().required().description('Amount of monthly added floor contribution in euro'),
+  AUTH_BEARER_SHA256_KEY: Joi.string()
+    .required()
+    .description('SHA256 encrypted token used to authenticate with Bearer'),
+  GLISTE_API_KEY: Joi.string()
+    .required()
+    .description('API key for "Getränkeliste App"'),
+  GLISTE_API_ACCOUNT: Joi.string()
+    .email()
+    .required()
+    .description('E-Mail of "Getränkeliste App" Account'),
+  FLOOR_CONTRIBUTION: Joi.number()
+    .required()
+    .description('Amount of monthly added floor contribution in euro'),
   E401: Joi.string().required().description('Id of Gliste-account E401'),
   E402: Joi.string().required().description('Id of Gliste-account E402'),
   E403: Joi.string().required().description('Id of Gliste-account E403'),

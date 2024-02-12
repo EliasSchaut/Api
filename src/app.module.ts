@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { EnvValidationSchema } from './common/env.validation';
-import { BimiModule } from './routes/bimi/bimi.module';
+import { EnvValidationSchema } from '@/common/env.validation';
+import { BimiModule } from '@/routes/bimi/bimi.module';
 
 @Module({
   imports: [
@@ -12,5 +12,4 @@ import { BimiModule } from './routes/bimi/bimi.module';
     BimiModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

@@ -1,8 +1,8 @@
 {
-  "name": "api",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "webapi",
+  "version": "1.0.0",
+  "description": "Personal API not recommended for others to use",
+  "author": "EliasSchaut",
   "private": true,
   "license": "MIT",
   "scripts": {
