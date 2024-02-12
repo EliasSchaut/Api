@@ -15,7 +15,7 @@ export const EnvValidationSchema = Joi.object({
     .email()
     .required()
     .description('E-Mail of "Getränkeliste App" Account'),
-  FLOOR_CONTRIBUTION: Joi.number()
+  FLOOR_CONTRIBUTION: Joi.string()
     .required()
     .description('Amount of monthly added floor contribution in euro'),
   E401: Joi.string().required().description('Id of Gliste-account E401'),
